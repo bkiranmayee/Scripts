@@ -27,6 +27,6 @@ dat1.ped<-as.data.frame(cbind(samples.list,dat.ped),stringsAsFactors = F)
 row.names(dat1.ped)<-samples.list
 dat.ped<-dat1.ped
 dat.ped[2:ncol(dat.ped)]<-lapply(dat1.ped[2:ncol(dat1.ped)], function(x) ifelse(x == 0, 2, ifelse(x == 2, 0, x)))
-dat.ped[2:ncol(dat.ped)]<-lapply(dat.ped[2:ncol(dat.ped)], function(x) ifelse(x == "NA", 5, x))
-write.table(dat.ped, file = paste(args[2],"ped", sep="."), sep=" ",col.names=F, quote=F)
+#dat.ped[2:ncol(dat.ped)]<-lapply(dat.ped[2:ncol(dat.ped)], function(x) ifelse(x == "NA", 5, x))
+write.table(dat.ped, file = paste(args[2],"ped", sep="."), sep=" ",col.names=F, quote=F, NA = "5")
 
