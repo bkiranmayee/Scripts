@@ -1,7 +1,10 @@
 #!/bin/Rscript
 # Date: Nov 30 2018
-# This script loads a saved R session data and runs GWAS using GMMAT package on the list of snps that the user inputs
-
+# This script runs GWAS using GMMAT package on the list of snps that the user inputs
+# GDS file can be generated from the binary plink files, for example: SeqArray::seqBED2GDS("file.bed","file.fam","file.bim", "file.gds") 
+# GRM can be generated from the binary plink files using the GEMMA package but it should have the column and row names same as the ID column of the phenotype file
+# Phenotype file should have the ID column in the current GMMAT version  1.0.3
+# for more information please visit this page "https://github.com/hanchenphd/GMMAT/blob/master/inst/doc/GMMAT.pdf"
 
 library(GMMAT)
 
@@ -11,7 +14,7 @@ args = commandArgs(trailingOnly=TRUE)
 
 # test if there are at least 5 argument: if not, return an error
 if (length(args)<5) {
-  stop("At least 5 arguments must be supplied gds file,pheno, GRM, snp.ids and output file name.\n", call.=FALSE)
+  stop("At least 5 arguments must be supplied gds file, phenotype file, GRM, snp.ids and output file name.\n", call.=FALSE)
 } 
 
 
